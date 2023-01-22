@@ -19,6 +19,7 @@ def getVehiclesWaiting(station):
     cars = waiting_cars[stations.index(station)]
     trucks = waiting_trucks[stations.index(station)]
     scooters = waiting_scooters[stations.index(station)]
+    print(station)
     return {"cars" : cars, "trucks" : trucks, "scooters" : scooters}
 
 def getWaitingTime(station):
@@ -57,8 +58,8 @@ class NearestLocations(Resource):
         for i in near4:
             nearest[i] = {
                 "station" : i,
-                "waiting_vehicles" : getVehiclesWaiting(station),
-                "waitTime" : getWaitingTime(station)["waitTime"]
+                "waiting_vehicles" : getVehiclesWaiting(i),
+                "waitTime" : getWaitingTime(i)["waitTime"]
             }
         return {"nearest":nearest}
 
